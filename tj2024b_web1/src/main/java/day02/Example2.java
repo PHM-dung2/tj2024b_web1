@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 //	1단계 : extends HttpServlet
 //	2단계 : @WebServlet("주소정의")
-// 	3단계 : http metgod( get/post/put/delete ) 의 메소드를 재정의한다.
+// 	3단계 : http method( get/post/put/delete ) 의 메소드를 재정의한다.
 
 @WebServlet("/day02/example2") // http://localhost:8080/tj2024b_web1/day02/example2
 public class Example2 extends HttpServlet{
