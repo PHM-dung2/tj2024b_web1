@@ -4,15 +4,6 @@ import java.io.IOException;
 
 import jakarta.servlet.ServletException;
 
-//	자바의 클래스를 서블릿 클래스로 만들기
-//	1. 클래스명 extends httpServlet
-//	2. 클래스 성언부 위에 @WebServlet("http 주소체계 정의 ") : 
-//		주의할점 : 주소는 아무거나 하되 프로젝트내 중복 불가능
-//		@WebServlet("http://localhost:8080/tj2024b_web1/day02/example1") 	: 절대경로
-//		@WebServlet("(프로젝트명 이하 생략)/day02/example1") 						: 상대경로
-//	3. 요청 받은 방법(함수==기능==메소드==행위) 정의
-//		1. doGet , 2. doPsot , 3. doPut , 4. doDelete ===> 4종 구현 Rest(휴식)
-
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
