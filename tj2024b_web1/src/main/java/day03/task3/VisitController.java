@@ -52,10 +52,12 @@ public class VisitController extends HttpServlet{
 //	반환타입 : application/json	, 매개변수 예) true
 	@Override
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//		1. HTTP로부터 요청(request)받은 HTTP HEADER BODY(본문)을 DTO 파싱(변환) 가져오기
 		ObjectMapper mapper = new ObjectMapper();
 		VisitDto visitDto = mapper.readValue( req.getReader() , VisitDto.class );
-		
+//		2. DAO 처리
 		boolean result = VisitDao.getInstance().update(visitDto);
+//		3. DAO 결과를 HTTP HEADER BODY(본문)으로 응답(response) 보내기
 		resp.setContentType( "application/json" );
 		resp.getWriter().print(result);
 		
