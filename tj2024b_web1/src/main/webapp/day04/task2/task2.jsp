@@ -12,26 +12,26 @@
 	<hr/>
 	
 	<div>
-		<fieldset style="width: 270px; text-align:center;">
-			<legend> <h3> 대기 명단 등록 </h3> </legend>
+		<fieldset style="width: 330px; text-align: center;">
+			<legend style="font-weight: bold" > 대기 명단 등록 </legend>
 			<table>
 				<tr>
-					<th> 전화번호 </th> 
-					<th> <input type="tel" placeholder="010-0000-0000" class="phoneInput" /> </th> 
+					<th style="width: 150px"> 전화번호 </th> 
+					<td> <input type="tel" value="010-" maxlength="13" class="phoneInput" /> </td> 
 				</tr>
 				
 				<tr>
 					<th> 인원수 </th> 
-					<th> <input class="phoneInput" /> </th> 
+					<td> <input type="number" class="countInput" /> </td> 
 				</tr>
 			</table>
-			<button onclick="waitWrite" type="button"> 등록 </button>
+			<button onclick="waitWrite()" type="button"> 등록 </button>
 		</fieldset>
 	</div>
 	
 	<div> 
-		<fieldset style="width: 270px; text-align:center;">
-			<legend> <h3> 대기 명단 </h3> </legend>
+		<fieldset style="width: 330px; text-align: center;">
+			<legend style="font-weight: bold" > 대기 명단 </legend>
 			<table border="1">
 				<thead>
 					<tr>
@@ -41,7 +41,7 @@
 						<th> 비고 </th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody class="tbody">
 				
 				</tbody>
 			</table>
