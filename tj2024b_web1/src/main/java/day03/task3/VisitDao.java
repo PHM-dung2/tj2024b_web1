@@ -46,6 +46,7 @@ public class VisitDao {
 			ResultSet rs = ps.executeQuery();
 			while( rs.next() ) {
 				VisitDto visitDto = new VisitDto();
+				visitDto.setNum(rs.getInt("num"));
 				visitDto.setContent(rs.getString("content"));
 				visitDto.setAge(rs.getInt("age"));
 				result.add( visitDto );

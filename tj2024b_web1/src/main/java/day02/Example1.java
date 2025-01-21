@@ -29,7 +29,7 @@ public class Example1 extends HttpServlet{
 //	1. POST : dopost + 자동완성
 	 @Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		 System.out.println(" 1] HTTP 프로토콜 통신이 POST 방법으로 쵸엉이 왔습니다.");
+		 System.out.println(" 1] HTTP 프로토콜 통신이 POST 방법으로 요청이 왔습니다.");
 	}
 	
 //	2. GET : doget + 자동완성

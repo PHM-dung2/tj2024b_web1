@@ -1,6 +1,5 @@
 package day04;
 
-import java.awt.print.Printable;
 import java.io.IOException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
