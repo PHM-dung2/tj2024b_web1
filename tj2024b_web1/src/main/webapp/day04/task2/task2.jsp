@@ -36,8 +36,8 @@
 				<thead>
 					<tr>
 						<th> 번호 </th>
-						<th> 인원수 </th>
 						<th> 전화번호 </th>
+						<th> 인원수 </th>
 						<th> 비고 </th>
 					</tr>
 				</thead>

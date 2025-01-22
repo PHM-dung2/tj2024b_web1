@@ -1,7 +1,7 @@
 
 // 1. 대기 명단 등록 함수
 const waitWrite = () => {
-	// 1. HTML롭터 input dom객체 가져오기
+	// 1. HTML로부터 input dom객체 가져오기
 	let phoneInput = document.querySelector('.phoneInput');
 	let countInput = document.querySelector('.countInput');
 	// 2. 입력받은 값 가져오기
