@@ -23,29 +23,13 @@
 	
 		<div id="index">
 			<form class="parkform">
-				<div> 가능 </div>
-				<div> 가능 </div>
-				<div> 불가 </div>
-				<div> 가능 </div>
-				<div> 가능 </div>
-				<div> 가능 </div>
-				<div> 불가 </div>
-				<div> 가능 </div>
-				<div> 가능 </div>
-				<div> 가능 </div>
-				<div> 가능 </div>
-				<div> 가능 </div>
-				<div> 가능 </div>
-				<div> 가능 </div>
-				<div> 가능 </div>
-				<div> 가능 </div>
-				<div> 가능 </div>
-				<div> 가능 </div>
-				<div> 가능 </div>
-				<div> 가능 </div>
+				
 			</form>
 		</div>
 	</div>
+	
+	<script src="./js/index.js"></script>
+	<script> parkingPrint() </script>
 	
 </body>
 </html>
