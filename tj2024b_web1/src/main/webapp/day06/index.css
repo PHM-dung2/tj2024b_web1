@@ -6,10 +6,16 @@
 }
 
 /* 전체 */
-#wrap{ width: 1200px; margin: 0 auto; }
+#wrap{ 
+	width: 1200px; height: 950px;
+	margin: 0 auto; 
+	background: #f0f0f0; }
 
 /* header */
-#header{ text-align: center; }
+#header{ 
+	text-align: center;
+	
+}
 #header h1{ 
 	padding : 40px; margin-bottom: 40px; 
 	background-color: #c0c0c0;
