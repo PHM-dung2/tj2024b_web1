@@ -14,3 +14,4 @@ create table board(
 );
 
 select * from board;
+
