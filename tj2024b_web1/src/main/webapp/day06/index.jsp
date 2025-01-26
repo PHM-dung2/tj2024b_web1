@@ -19,6 +19,10 @@
 				<div> 차량번호 : </div> 
 				<input type="text" class="carINput" />
 			</div>
+			<div class="btnBox">
+				<button onclick="" type="button"> 입차 </button>
+				<button onclick="" type="button"> 출차 </button>
+			</div>
 		</div>
 	
 		<div id="index">
