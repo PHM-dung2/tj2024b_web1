@@ -1,4 +1,50 @@
 
+/* 한웅재 */
+let path = `/tj2024b_web1/day06/parking`;
+
+/** 입차 함수 */
+let inCar = () => {
+	let location = document.querySelector(".locationInput");
+	let carInput = document.querySelector(".carInput");
+	let object = {pno : Number(location.value), car : carInput.value, state : 0, price : 0};
+	console.log(object);
+	const option = {
+		method : "POST",
+		headers : {"Content-Type" : "application/json"},
+		body : JSON.stringify(object)
+	};
+	fetch(path, option)
+	.then(response => response.json())
+	.then(data => {
+		if(data == true) {
+			alert("입차 성공!");
+			location.value = "";
+			carInput.value = "";
+		} else { alert("입차 실패!"); }
+		parkingPrint();
+	})
+	.catch(error => { console.log(error); });
+}
+
+/** 출차 함수 */
+let outCar = () => {
+	let carInput = document.querySelector(".carInput");
+	let car = carInput.value;
+	console.log(car);
+	const option = {method : "DELETE"};
+	fetch(`${path}?car=${car}`, option)
+	.then(response => response.json())
+	.then(data => {
+		if(data == true) {
+			alert("출차 성공!");
+			carInput.value = "";
+		} else { alert("입차 실패!"); }
+		parkingPrint()
+	})
+	.catch(error => { console.log(error); });
+}
+
+/* 박희만 */
 // 주차 상태 확인
 const parkingPrint = () => {
 	// 1. DOM 객체 가져오기
@@ -6,7 +52,7 @@ const parkingPrint = () => {
 	// 2. fetch 통신
 	let html = '';
 	const option = { method : 'GET' }
-	fetch( `/tj2024b_web1/day06/parking` , option )
+	fetch( `/tj2024b_web1/day06/parkingprint` , option )
 		.then( r => r.json() )
 		.then( data => {
 			// 주차 데이터 배열에서 주차된 번호만 추출

@@ -8,20 +8,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
+
 	<div id="wrap">
 		
 		<div id="header"> 
 			<h1> 기계식 주차장 시스템 </h1>
 			<div class="inputBox">
-				<div> 주차위치 : </div> 
-				<input type="text" class="locationInput" maxlength="2"/>
-				<div> 차량번호 : </div> 
-				<input type="text" class="carInput" maxlength="7" />
-			</div>
-			<div class="btnBox">
-				<button onclick="inCar()" type="button"> 입차 </button>
-				<button onclick="outCar()" type="button"> 출차 </button>
+				<h4> 관리자 - 입/출차 내역 </h4>
 			</div>
 		</div>
 	
@@ -32,12 +25,12 @@
 		</div>
 		
 		<div id="footer"> 
-			<button onclick="location.href='admin.jsp'" type="button"> 관리자 모드 </button>
+			<button onclick="location.href='index.jsp'" type="button"> 입/출차 등록 </button>
 		</div>
 	</div>
 	
 	<script src="./js/index.js"></script>
-	<script> parkingPrint() </script>
+	<script>  </script>
 	
 </body>
 </html>

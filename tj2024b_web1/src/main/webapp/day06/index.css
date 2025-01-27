@@ -7,7 +7,7 @@
 
 /* 전체 */
 #wrap{ 
-	width: 1200px;
+	width: 1200px; height: 950px;
 	margin: 0 auto; 
 	background: #f0f0f0; }
 
@@ -32,6 +32,7 @@
 }
 
 /* index */
+#index { height: 520px; }
 #index .parkform{ 
 	display: flex; flex-wrap: wrap;
 	width: 950px; margin: 0 auto;
@@ -51,12 +52,19 @@
 
 #index .full{ background-color: red; color: white;}
 
+#index table{ 
+	width: 900px; margin: 0 auto; 
+	text-align: center;
+	border-collapse: collapse;
+}
+#index th , td{ padding: 5px 0px; }
+
 /* footer */
 #footer{ text-align: right; }
 #footer button{ 
 	font-size: 15px; font-weight: bold;
 	width: 130px; height: 30px; 
-	margin: 35px;
+	margin: 50px 35px;
 }
 
 
