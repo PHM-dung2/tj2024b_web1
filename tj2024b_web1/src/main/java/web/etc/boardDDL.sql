@@ -24,3 +24,4 @@ insert into member ( mid , mpwd , mname , mphone ) values( 'vbn123' , 'd123456' 
 insert into member ( mid , mpwd , mname , mphone ) values( 'rty123' , 'e123456' , '하하'   ,  '010-7777-7777' );
 
 select * from member;
+
