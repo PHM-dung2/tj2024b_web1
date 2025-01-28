@@ -15,6 +15,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/day08/waiting")
 public class WaitingController extends HttpServlet{
@@ -24,17 +25,18 @@ public class WaitingController extends HttpServlet{
 	boolean result = false;
 	
 //	1. 대기명단 등록
+//	{ "phone" : "010-1111-1111", "count" : 2 }
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //		1. http 요청에 따른 JSON 타입을 DTO 변환
 		ObjectMapper mapper = new ObjectMapper();
-		HashMap< String , String> map = mapper.readValue( req.getReader() , HashMap.class );
+		HashMap<String , String> map = mapper.readValue( req.getReader() , HashMap.class );
 		map.put("wno", count+"");
 		System.out.println( map );
 //		2. DB처리
 		if( map != null ) { 
 			result = true;	list.add(map); 
-			count++;
+			count++; 
 		}
 //		3. http 응답처리
 		resp.setContentType("application/json");
@@ -69,16 +71,16 @@ public class WaitingController extends HttpServlet{
 	}
 	
 //	4. 특정 대기명단 (인원수) 수정
+//	{ "wno" : 1 , "phone" : "010-1111-1111" }
 	@Override
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ObjectMapper mapper = new ObjectMapper();
-		HashMap<String, String> map1 = mapper.readValue( req.getReader() , HashMap.class );
-		System.out.println(map1);
+		HashMap<String, String> map = mapper.readValue( req.getReader() , HashMap.class );
+		System.out.println(map);
 //		인원수 수정
-		list.forEach( map2 -> {
-			if( map2.get("wno") != null && map2.containsValue(map1.get("wno"))) {
-//				map2.put("phone", map2.get("phone"));
-				map2.put("count", map1.get("count"));
+		list.forEach( value -> {
+			if( value.get("wno") != null && value.containsValue(map.get("wno"))) {
+				value.put("count", map.get("count"));
 				result = true;
 			} // if end
 		});
