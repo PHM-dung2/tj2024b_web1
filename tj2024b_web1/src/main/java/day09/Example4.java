@@ -36,7 +36,7 @@ public class Example4 extends HttpServlet {
 //			1. DiskFileItemFactory 클래스 이용한 1. 저장위치 2. 업로드 용량제한 3. 한글 인코딩 설정
 		DiskFileItemFactory factory = new DiskFileItemFactory();
 		factory.setRepository( file ); 				// 1. 저장 위치 설정
-		factory.setSizeThreshold( 1024 * 1024 );	// 2. 업로드 용량 제한 설정 , 1바이트 기준 , 1024바이트 -> kib , 1024*1024 -> 
+		factory.setSizeThreshold( 1024 * 1024 );	// 2. 업로드 용량 제한 설정 , 1바이트 기준 , 1024바이트 -> 1kb , 1024*1024 -> 
 		factory.setDefaultCharset("UTF-8");			// 3. 한글 인코딩 설정
 //			2. ServletFileUpload 클래스에 위에서 설정한 기준으로 업로드 객체 생성한다.
 		ServletFileUpload fileUpload = new ServletFileUpload( factory );
