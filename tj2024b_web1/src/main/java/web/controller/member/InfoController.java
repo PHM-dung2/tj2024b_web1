@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpSession;
 import web.model.dao.MemberDao;
 import web.model.dto.MemberDto;
 
+@SuppressWarnings("serial")
 @WebServlet("/member/info")
 public class InfoController extends HttpServlet{
 
