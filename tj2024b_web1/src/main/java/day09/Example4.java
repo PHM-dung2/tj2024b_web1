@@ -36,31 +36,33 @@ public class Example4 extends HttpServlet {
 //			1. DiskFileItemFactory 클래스 이용한 1. 저장위치 2. 업로드 용량제한 3. 한글 인코딩 설정
 		DiskFileItemFactory factory = new DiskFileItemFactory();
 		factory.setRepository( file ); 				// 1. 저장 위치 설정
-		factory.setSizeThreshold( 1024 & 1024 );	// 2. 업로드 용량 제한 설정 , 1바이트 기준 , 1024바이트 -> kib , 1024*1024 -> 
+		factory.setSizeThreshold( 1024 * 1024 );	// 2. 업로드 용량 제한 설정 , 1바이트 기준 , 1024바이트 -> kib , 1024*1024 -> 
 		factory.setDefaultCharset("UTF-8");			// 3. 한글 인코딩 설정
 //			2. ServletFileUpload 클래스에 위에서 설정한 기준으로 업로드 객체 생성한다.
 		ServletFileUpload fileUpload = new ServletFileUpload( factory );
 //			3. 업로드 객체에 HTTP 요청 객체를 대입하여 HTTP 요청객체를 업로드객체로 변환하고, 반환된 자료들을 리스트로 받는다.
+		try {
 		List< FileItem > formItems = fileUpload.parseRequest( req ); 
-//		<-- cos.jar / commons.jar 톰캣 10.1버전을 지원하지 않는다. 톰캣 9 이하 설치 또는 마이그레이션 이용하여 라이브러리 버전 낮추기
-//			4. 만약에 업로드 객체 내 반환된 자료들이 존재하면
-		if( formItems != null && !formItems.isEmpty() ) {
-//			5. 반복문을 이용한 form 자료들을 하나씩 확인한다.
-			for( int index = 0 ; index <= formItems.size()-1; index++ ) {
-//				6. 자료 1개만 추출
-				FileItem fileItem = formItems.get(index);
-//				7. 자료가 첨부파일(파일)인지 단순한 문자열인지 구분
-				if( fileItem.isFormField() ) { // 일반 폼 자료인지
-					System.out.println("첨부파일이 아닌 일반 텍스트 : " + fileItem.getName() );
-				}else { // 첨부파일 폼 자료인지
-					System.out.println("첨부파일 : " +  fileItem.getName() );
-//					8. 만일 첨부파일이면 현재 업로드 경로에 파일명 붙이기
-					File uploadFile = new File( uploadPath + "/" + fileItem.getName() );
-//					9. 지정한 파일명으로 업로드 처리
-					fileItem.write(uploadFile);
-				}
-			} // for end
-		} // if end
+		//		오류발생 이유 : <-- cos.jar / commons.jar 톰캣 10.1버전을 지원하지 않는다. 톰캣 9 이하 설치 또는 마이그레이션 이용하여 라이브러리 버전 낮추기
+		//		4. 만약에 업로드 객체 내 반환된 자료들이 존재하면
+			if( formItems != null && !formItems.isEmpty() ) {
+		//		5. 반복문을 이용한 form 자료들을 하나씩 확인한다.
+				for( int index = 0 ; index <= formItems.size()-1; index++ ) {
+		//			6. 자료 1개만 추출
+					FileItem fileItem = formItems.get(index);
+		//			7. 자료가 첨부파일(파일)인지 단순한 문자열인지 구분
+					if( fileItem.isFormField() ) { // 일반 폼 자료인지
+						System.out.println("첨부파일이 아닌 일반 텍스트 : " + fileItem.getName() );
+					}else { // 첨부파일 폼 자료인지
+						System.out.println("첨부파일 : " +  fileItem.getName() );
+		//				8. 만일 첨부파일이면 현재 업로드 경로에 파일명 붙이기
+						File uploadFile = new File( uploadPath + "/" + fileItem.getName() );
+		//				9. 지정한 파일명으로 업로드 처리
+						fileItem.write(uploadFile);
+					}
+				} // for end
+			} // if end
+		}catch( Exception e ) { System.out.println( e ); }
 		
 	}
 	
