@@ -31,13 +31,9 @@
 			</button>
 			<!-- 메뉴박스 -->
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<!-- 메뉴 목록 -->
+				<!-- 왼쪽 메뉴 목록 -->
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<!-- 메뉴항목 -->
-					<li class="nav-item"><a class="nav-link"
-						href="/tj2024b_web1/web/member/login.jsp">로그인</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="/tj2024b_web1/web/member/signup.jsp">회원가입</a></li>
 					<li class="nav-item"><a class="nav-link" href="#">게시판</a></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" role="button"
@@ -50,17 +46,18 @@
 									here</a></li>
 						</ul></li>
 				</ul>
-				<form class="d-flex" role="search">
-					<input class="form-control me-2" type="search" placeholder="Search"
-						aria-label="Search">
-					<button class="btn btn-outline-success" type="submit">Search</button>
-				</form>
+				
+				<!-- 오른쪽 메뉴 목록 -->
+				<ul class="navbar-nav me-end mb-2 mb-lg-0 LogInMenu"> <!-- me-end : 오른쪽 정렬 --> 
+				
+				</ul>
 			</div>
 		</div>
 	</nav>
 
 	<!-- 부트스트랩 js -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
+	<script src="/tj2024b_web1/web/js/header.js"></script>
+	
 </body>
 </html>
