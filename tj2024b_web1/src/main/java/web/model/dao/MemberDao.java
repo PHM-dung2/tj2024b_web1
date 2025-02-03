@@ -71,6 +71,7 @@ public class MemberDao extends Dao{
 				result.setMname( rs.getString("mname") );
 				result.setMphone( rs.getString("mphone") );
 				result.setMdate( rs.getString("mdate") );
+				result.setMimg( rs.getString("mimg"));
 				return result;
 			}
 		}catch( SQLException e ) { System.out.println( e ); }

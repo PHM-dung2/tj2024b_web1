@@ -16,7 +16,7 @@ const getLogInInfo = () => {
 					<li class="nav-item"><a class="nav-link" href="/tj2024b_web1/web/member/signup.jsp">회원가입</a></li>`
 		}else{ console.log('로그인상태')
 			html += `<li class="nav-item">
-						<a class="nav-link" href="#" > <img class="header_profile" src="" /> ${ data.mid } 님 </a>
+						<a class="nav-link" href="#" > <img class="header_profile" src="/tj2024b_web1/upload/${ data.mimg }" /> ${ data.mid } 님 </a>
 					</li>
 					<li class="nav-item"><a class="nav-link" href="#" onclick="onLogOut()">로그아웃</a></li>`
 		} // if end
