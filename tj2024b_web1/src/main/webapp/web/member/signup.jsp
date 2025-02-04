@@ -52,7 +52,7 @@
 						<label for="floatingInput">프로필</label>
 					</div>
 					
-					<button class="w-100 btn btn-lg btn-primary" type="button" onclick="onSignUp()">회원가입 하기</button>
+					<button class="w-100 btn btn-lg btn-primary" type="button" onclick="onSignUp()">회원가입</button>
 					<hr class="my-4">
 					<small class="text-body-secondary"> <a class="nav-link" href=""> 아이디찾기 </a> </small>
 					<small class="text-body-secondary"> <a class="nav-link" href=""> 비밀번호찾기 </a> </small>
