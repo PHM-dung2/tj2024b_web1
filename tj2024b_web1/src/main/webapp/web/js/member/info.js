@@ -72,20 +72,6 @@ const getPoint = () => {
 } // f end
 getPoint();
 
-// [5] 남은 포인트 조회
-const currentPoint = () => {
-	
-	let option = { method : 'GET' }
-	fetch( '/tj2024b_web1/web/point?type=current' , option )
-		.then( r => r.json() )
-		.then( data => {
-			document.querySelector('.currentPoint') = data;
-		}) // then end
-		.catch( e => { console.log(e); })
-	
-} // f end
-
-
 
 
 

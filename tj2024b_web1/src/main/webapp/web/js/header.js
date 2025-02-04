@@ -18,11 +18,12 @@ const getLogInInfo = () => {
 			html += `<li class="nav-item">
 						<a class="nav-link" href="#" > <img class="header_profile" src="/tj2024b_web1/upload/${ data.mimg }" /> ${ data.mid } 님 </a>
 					</li>
-					<li class="nav-item"><a class="nav-link currentPoint" href="#" ></a></li>
+					<li class="nav-item currentPoint"></li>
 					<li class="nav-item"><a class="nav-link" href="/tj2024b_web1/web/member/info.jsp">마이페이지</a></li>
 					<li class="nav-item"><a class="nav-link" href="#" onclick="onLogOut()">로그아웃</a></li>`
 		} // if end
 		loginmenu.innerHTML = html;
+		currentPoint();
 	}) // then end
 	.catch( e => { console.log( e ); })
 } // f end
@@ -39,6 +40,21 @@ const onLogOut = () => {
 	})
 	.catch( e => { console.log( e ); })
 } // f end
+
+// [3] 남은 포인트 조회
+const currentPoint = () => {
+	
+	const currentPointInput = document.querySelector('.currentPoint');
+	
+	let option = { method : 'GET' }
+	fetch( '/tj2024b_web1/web/point?type=current' , option )
+		.then( r => r.text() )
+		.then( data => {
+			currentPointInput.innerHTML = `${ data } point`;
+		}) // then end
+		.catch( e => { console.log(e); })
+} // f end
+
 
 
 

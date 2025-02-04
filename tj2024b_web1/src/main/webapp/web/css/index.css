@@ -33,5 +33,10 @@
 	height: 70px; 
 }
 
-
+.currentPoint{
+	display: flex;
+	align-items: center;
+	height: 70px;
+	margin: 0px 5px;
+}
 

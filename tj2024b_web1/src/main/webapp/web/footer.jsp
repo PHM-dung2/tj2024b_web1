@@ -8,5 +8,8 @@
 </head>
 <body>
 
+
+	<script src="/tj2024b_web1/web/js/footer.js"></script>
+
 </body>
 </html>

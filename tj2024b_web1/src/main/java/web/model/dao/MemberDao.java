@@ -149,7 +149,7 @@ public class MemberDao extends Dao{
 			PreparedStatement ps = conn.prepareStatement(sql);
 				ps.setInt(1, logInMno);
 			ResultSet rs = ps.executeQuery();
-			if( rs.next() ) { result = rs.getInt("pcount"); }
+			if( rs.next() ) { result = rs.getInt("sum(pcount)"); }
 		}catch( SQLException e ) { System.out.println(e); }
 		return result;
 	} // f end

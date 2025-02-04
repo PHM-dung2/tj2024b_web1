@@ -30,7 +30,7 @@
 					</div>
 					
 					<div class="form-floating mb-3">
-						<input type="text" name="mname" class="form-control mpwd" id="floatingInput" placeholder="새로운 비밀번호"> 
+						<input type="password" name="mname" class="form-control mpwd" id="floatingInput" placeholder="새로운 비밀번호"> 
 						<label for="floatingInput">새로운 비밀번호</label>
 					</div>
 					

@@ -33,7 +33,6 @@ public class PointController extends HttpServlet{
 		HttpSession session = req.getSession();
 		Object object = session.getAttribute("logInMno");
 		if( object != null ) { logInMno = (Integer)object; }
-		System.out.println( logInMno );
 		
 		ObjectMapper mapper = new ObjectMapper();
 		if( type != null ) {
@@ -46,7 +45,6 @@ public class PointController extends HttpServlet{
 			}else if( type.equals("current") ) {
 				// 남은 포인트 조회 dao 호출
 				int result = MemberDao.getInstance().currentPoint(logInMno);
-				System.out.println( result );
 				resp.setContentType("text/plain");
 				resp.getWriter().print(result);
 			} // if end
