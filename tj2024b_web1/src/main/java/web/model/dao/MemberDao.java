@@ -3,10 +3,12 @@ package web.model.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import web.model.dto.MemberDto;
+import web.model.dto.PointDto;
 
 //	@Getter // 클래스 내 모든 멤버변수에  getter 적용
 @NoArgsConstructor( access = lombok.AccessLevel.PRIVATE ) // 클래스 내 디폴트생성자를 private 적용
@@ -106,5 +108,50 @@ public class MemberDao extends Dao{
 		return false;
 	} // f end
 	
+//	[6] 포인트 테이블 입력
+	public void pointPost( PointDto pointDto ) {
+		try {
+			String sql = "insert into point( pcontent , pcount , mno ) value( ? , ? , ? )";
+			PreparedStatement ps = conn.prepareStatement(sql);
+				ps.setString(1 , pointDto.getPcontent() );
+				ps.setInt(2 , pointDto.getPcount() );
+				ps.setInt(3 , pointDto.getMno() );
+			ps.executeUpdate();
+		}catch( SQLException e ) { System.out.println(e); }
+	} // f end
+	
+//	[7] 현재 로그인된 회원의 포인트 로그 전체 조회
+	public ArrayList<PointDto> pointFindAll( int logInMno ) {
+		ArrayList<PointDto> result = new ArrayList<>();
+		try{
+			String sql = "select * from point where mno = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+				ps.setInt(1, logInMno);
+			ResultSet rs = ps.executeQuery();
+			while( rs.next() ) {
+				PointDto pointDto = new PointDto();
+				pointDto.setPno(rs.getInt("pno"));
+				pointDto.setPcontent(rs.getString("pcontent"));
+				pointDto.setPcount(rs.getInt("pcount"));
+				pointDto.setPdate(rs.getString("pdate"));
+				pointDto.setMno(rs.getInt("mno"));
+				result.add(pointDto);
+			} // w end
+		}catch( SQLException e ) { System.out.println(e); }
+		return result;
+	} // f end
+	
+//	[8] 현재 포인트
+	public int currentPoint( int logInMno ) {
+		int result = 0;
+		try {
+			String sql = "select sum(pcount) from point where mno = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+				ps.setInt(1, logInMno);
+			ResultSet rs = ps.executeQuery();
+			if( rs.next() ) { result = rs.getInt("pcount"); }
+		}catch( SQLException e ) { System.out.println(e); }
+		return result;
+	} // f end
 	
 }

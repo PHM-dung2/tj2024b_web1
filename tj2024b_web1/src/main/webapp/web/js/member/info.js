@@ -45,9 +45,45 @@ const onUpdate = () => {
 	location.href="./update.jsp"; 
 	// 게시판에서는 게시물번호가 세션 없으므로 ?bno=3 , 하지만 수정할 회원번호(로그인된 회원번호)가 세션에 있으므로 굳이 할 필요가 없다.
 	// 현재 페이지와 이동할 페이지가 같은 폴더이면 지정 파일명 작성 , 만일 다른 폴더이면 프로젝트명부터 작성 , ./ : 현재폴더 , ../ : 이전폴더 상대참조 작성
-	
 } // f end
 
+// [4] 회원 포인트 테이블 
+const getPoint = () => {
+	
+	const pointTbody = document.querySelector('.pointTbody');
+	
+	let html = '';
+	
+	const option = { method : 'GET' }
+	fetch( '/tj2024b_web1/web/point?type=all' , option )
+		.then( r => r.json() )
+		.then( data => {
+			data.forEach( obj => {
+				html += `<tr>
+							<th scope="row"> ${ obj.pcontent } </th>
+							<td> ${ obj.pcount } </td>
+							<td> ${ obj.pdate } </td>
+						</tr>`
+			}) // for end
+		pointTbody.innerHTML = html;
+		}) // then end
+		.catch( e => { console.log(e); })
+		
+} // f end
+getPoint();
+
+// [5] 남은 포인트 조회
+const currentPoint = () => {
+	
+	let option = { method : 'GET' }
+	fetch( '/tj2024b_web1/web/point?type=current' , option )
+		.then( r => r.json() )
+		.then( data => {
+			document.querySelector('.currentPoint') = data;
+		}) // then end
+		.catch( e => { console.log(e); })
+	
+} // f end
 
 
 

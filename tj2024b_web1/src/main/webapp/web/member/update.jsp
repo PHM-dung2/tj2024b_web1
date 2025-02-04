@@ -13,7 +13,8 @@
 	<!-- 회원가입 폼 -->
 	<div class="container col-xl-10 col-xxl-8 px-4 py-5">
 		<div class="row align-items-center g-lg-5 py-5">
-			<!-- 왼쪽 메세지 구역 -->
+			
+			<!-- 오른쪽 메세지 구역 -->
 			<div class="col-md-10 mx-auto col-lg-5">
 				<form class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
 					
@@ -29,41 +30,28 @@
 					</div>
 					
 					<div class="form-floating mb-3">
-						<input type="text" readonly name="mname" class="form-control mname" id="floatingInput" placeholder="닉네임"> 
+						<input type="text" name="mname" class="form-control mpwd" id="floatingInput" placeholder="새로운 비밀번호"> 
+						<label for="floatingInput">새로운 비밀번호</label>
+					</div>
+					
+					<div class="form-floating mb-3">
+						<input type="text" name="mname" class="form-control mname" id="floatingInput" placeholder="닉네임"> 
 						<label for="floatingInput">닉네임</label>
 					</div>
 					
 					<div class="form-floating mb-3">
-						<input type="text" readonly name="mphone" class="form-control mphone" id="floatingInput" placeholder="연락처"> 
+						<input type="text" name="mphone" class="form-control mphone" id="floatingInput" placeholder="연락처"> 
 						<label for="floatingInput">연락처</label>
 					</div>
 					
-					<button class="w-100 btn btn-lg btn-primary" type="button" onclick="onUpdate()">회원정보 수정</button>
 					<hr class="my-4">
-					<button class="w-100 btn btn-lg btn-primary" type="button" onclick="onDelete()">회원 탈퇴</button>
+					<button class="w-100 btn btn-lg btn-primary" type="button" onclick="onUpdate()">회원정보 수정</button>
 				</form>
 			</div>
-			
-			<!-- 오른쪽 메세지 구역 -->
-			<div class="col-lg-7 text-center text-lg-start">
-				<table class="table">
-					<thead>
-						<tr>
-							<th scope="col">포인트 지급내용</th>
-							<th scope="col">수량</th>
-							<th scope="col">날짜</th>
-						</tr>
-					</thead>
-					<tbody class="pointTbody">
-						
-					</tbody>
-				</table>
-			</div>
-			
 		</div>
 	</div>
 	
-	<script src="/tj2024b_web1/web/js/member/info.js"></script>
+	<script src="/tj2024b_web1/web/js/member/update.js"></script>
 
 </body>
 </html>

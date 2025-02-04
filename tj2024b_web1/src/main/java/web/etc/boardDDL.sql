@@ -17,6 +17,16 @@ create table member(
     constraint primary key( mno )
 ); # table end 
 
+create table point(
+	pno int unsigned auto_increment ,
+    pcontent varchar(30) not null ,
+    pcount int not null ,
+    pdate datetime default now() ,
+    mno int unsigned ,
+    constraint primary key( pno ) ,
+    constraint foreign key( mno ) references member ( mno ) on update cascade on delete cascade
+);
+
 # [1] 회원테이블 샘플 레코드 삽입
 insert into member ( mid , mpwd , mname , mphone ) values( 'qwe123' , 'a123456' , '유재석' ,  '010-3333-3333' );
 insert into member ( mid , mpwd , mname , mphone ) values( 'asd123' , 'b123456' , '강호동' ,  '010-4444-4444' );
@@ -25,4 +35,5 @@ insert into member ( mid , mpwd , mname , mphone ) values( 'vbn123' , 'd123456' 
 insert into member ( mid , mpwd , mname , mphone ) values( 'rty123' , 'e123456' , '하하'   ,  '010-7777-7777' );
 
 select * from member;
+select * from point;
 

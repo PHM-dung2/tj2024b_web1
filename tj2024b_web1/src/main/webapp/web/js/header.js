@@ -18,8 +18,9 @@ const getLogInInfo = () => {
 			html += `<li class="nav-item">
 						<a class="nav-link" href="#" > <img class="header_profile" src="/tj2024b_web1/upload/${ data.mimg }" /> ${ data.mid } 님 </a>
 					</li>
+					<li class="nav-item"><a class="nav-link currentPoint" href="#" ></a></li>
 					<li class="nav-item"><a class="nav-link" href="/tj2024b_web1/web/member/info.jsp">마이페이지</a></li>
-					<li class="nav-item"><a class="nav-link" href="/#" onclick="onLogOut()">로그아웃</a></li>`
+					<li class="nav-item"><a class="nav-link" href="#" onclick="onLogOut()">로그아웃</a></li>`
 		} // if end
 		loginmenu.innerHTML = html;
 	}) // then end

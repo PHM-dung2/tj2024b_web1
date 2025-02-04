@@ -15,8 +15,10 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import web.model.dao.MemberDao;
 import web.model.dto.MemberDto;
+import web.model.dto.PointDto;
 
 @WebServlet("/member/signup")
 public class SignUpController extends HttpServlet{
@@ -69,6 +71,14 @@ public class SignUpController extends HttpServlet{
 	
 //			12. 
 		boolean result = MemberDao.getInstance().signUp(memberDto);
+		if( result ) {
+			int logInMno = MemberDao.getInstance().logIn(memberDto);
+			PointDto pointDto = new PointDto();
+			pointDto.setPcontent("회원가입");
+			pointDto.setPcount( 100 );
+			pointDto.setMno(logInMno);
+			MemberDao.getInstance().pointPost(pointDto);
+		} // if end
 //			13.
 		resp.setContentType( "application/json" );
 		System.out.println(result);
