@@ -140,7 +140,7 @@ select r.*, m.mid from reply r inner join member m on r.mno = m.mno where bno=23
 select * from board limit 2;
 select * from board limit 1 , 3;
 	# 컨셉 : 페이지별로 게시물을 5개씩 출력
-    # 1페이지 : 0 ~ 4 , 2페이지 5 ~ 9 , 3페이지 10 ~ 14 , 4페잊 15 ~ 20
+    # 1페이지 : 0 ~ 4 , 2페이지 5 ~ 9 , 3페이지 10 ~ 14 , 4페이지 15 ~ 20
 select * from board limit 0 , 5;	# 1페이지
 select * from board limit 5 , 5;	# 2페이지
 select * from board limit 10 , 5;	# 3페이지
