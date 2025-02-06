@@ -12,14 +12,14 @@ import jakarta.servlet.http.HttpServletResponse;
 import web.model.dao.BoardDao;
 import web.model.dto.BoardDto;
 
-@WebServlet("/board/info")
-public class BoardInfoController extends HttpServlet {
+@WebServlet("/board/view")
+public class BoardviewController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println(">> BOARD/INFO POST RUN");
 		int bno = Integer.parseInt(req.getParameter("bno"));
-		BoardDto result = BoardDao.getInstance().findPersnal(bno);
+		BoardDto result = BoardDao.getInstance().findByBno(bno);
 			ObjectMapper mapper = new ObjectMapper();
 			String jsonResult = mapper.writeValueAsString(result);
 		resp.setContentType("application/json");

@@ -118,3 +118,33 @@ insert into board (btitle, bcontent, mno, cno) values
 
 select * from board;
 select * from category;
+
+create table reply(
+	rno int unsigned auto_increment,
+	rcontent varchar( 500 ) not null,
+    rdate datetime default now(),
+    mno int unsigned,
+    bno int unsigned,
+    constraint primary key( rno ),
+    constraint foreign key ( mno ) references member (mno) on update cascade on delete cascade, 
+    constraint foreign key ( bno ) references board (bno) on update cascade on delete cascade
+);
+
+select * from reply;
+select r.*, m.mid from reply r inner join member m on r.mno = m.mno where bno=23;
+
+# 페이징 처리 조회
+	# limit : 조회된 레코드 결과를 제한
+    # limit 개수 : 첫번쨰 레코드부터 개수만큼만 제한해서 조회
+    # limit 시작인덱스 , 개수 : 시작 인덱스부터 개수만큼만 제한해서 조회
+select * from board limit 2;
+select * from board limit 1 , 3;
+	# 컨셉 : 페이지별로 게시물을 5개씩 출력
+    # 1페이지 : 0 ~ 4 , 2페이지 5 ~ 9 , 3페이지 10 ~ 14 , 4페잊 15 ~ 20
+select * from board limit 0 , 5;	# 1페이지
+select * from board limit 5 , 5;	# 2페이지
+select * from board limit 10 , 5;	# 3페이지
+select * from board limit 15 , 5;	# 4페이지
+	# 카테고리별 페이지 처리
+select * from board where cno = 1 limit 0 , 5;	# 뉴스 카테고리의 1페이지
+select * from board where cno = 2 limit 0 , 5;	# 이벤트 카테고리의 2페이지

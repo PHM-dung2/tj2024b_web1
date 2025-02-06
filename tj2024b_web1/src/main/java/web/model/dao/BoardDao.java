@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import web.model.dto.BoardDto;
+import web.model.dto.ReplyDto;
 
 @NoArgsConstructor( access = lombok.AccessLevel.PRIVATE )
 public class BoardDao extends Dao{
@@ -55,8 +56,9 @@ public class BoardDao extends Dao{
 	} // f end
 	
 //	3. 개별 게시물 조회
-	public BoardDto findPersnal( int bno ) {
+	public BoardDto findByBno( int bno ) {
 		BoardDto result = new BoardDto();
+		ArrayList<ReplyDto> arr = new ArrayList<>();
 		try {
 			String sql = "select b.* , m.mid , c.cname from board b "
 					+ "inner join member m on b.mno = m.mno "
@@ -74,7 +76,24 @@ public class BoardDao extends Dao{
 				result.setMid(rs.getString("mid"));
 				result.setCname(rs.getString("cname"));
 			} // if end
+			
+			String sql2 = "select r.*, m.mid from reply r "
+					+ "inner join member m on r.mno = m.mno "
+					+ "where bno=?";
+			PreparedStatement ps2 = conn.prepareStatement(sql2);
+				ps2.setInt(1, bno);
+			ResultSet rs2 = ps2.executeQuery();
+			while( rs2.next() ) {
+				ReplyDto replyDto = new ReplyDto();
+				replyDto.setRno(rs2.getInt("rno"));
+				replyDto.setRcontent(rs2.getString("rcontent"));
+				replyDto.setRdate(rs2.getString("rdate"));
+				replyDto.setMid(rs2.getString("mid"));
+				replyDto.setBno(rs2.getInt("bno"));
+				arr.add(replyDto);
+			}
 		}catch( SQLException e ) { System.out.println(e); }
+		result.setArr(arr);
 		return result;
 	} // f end
 	
@@ -106,11 +125,13 @@ public class BoardDao extends Dao{
 	} // f end
 	
 //	6. 댓글 작성
-	public boolean replyWrite() {
+	public boolean replyWrite( ReplyDto replyDto ) {
 		try {
-			String sql = "insert into value( ? )";
+			String sql = "insert into reply(rcontent, mno, bno) value( ?,?,? )";
 			PreparedStatement ps = conn.prepareStatement(sql);
-				
+				ps.setString(1, replyDto.getRcontent());
+				ps.setInt(2, replyDto.getMno());
+				ps.setInt(3, replyDto.getBno());
 			int count = ps.executeUpdate();
 			if( count == 1 ) { return true; }
 		}catch( SQLException e ) { System.out.println(e); }

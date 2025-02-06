@@ -1,5 +1,7 @@
 package web.model.dto;
 
+import java.util.ArrayList;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,4 +22,5 @@ public class BoardDto {
 //	+ HTML에 출력할 때 작성자의 회원번호가 아닌 작성자의 ID 출력
 	private String mid;
 	private String cname;
+	private ArrayList<ReplyDto> arr;
 }
