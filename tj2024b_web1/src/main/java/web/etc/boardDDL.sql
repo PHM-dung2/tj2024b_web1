@@ -26,24 +26,24 @@ insert into member ( mid , mpwd , mname , mphone ) values( 'rty123' , 'e123456' 
 select * from member;
 
 # [2] 포인트 테이블 생성 
-create table pointlog(
-        pono int unsigned auto_increment , 
-    pocomment varchar(255) not null , 
-    pocount int ,
-    podate datetime default now() ,
+create table point(
+	pno int unsigned auto_increment , 
+    pcontent varchar(255) not null , 
+    pcount int ,
+    pdate datetime default now() ,
     mno int unsigned , 
-    constraint primary key( pono ),
+    constraint primary key( pno ),
     constraint foreign key( mno ) references member( mno ) on update cascade on delete cascade 
 );
 
 # [*] 회원테이블 샘플 레코드 삽입
-insert into pointlog ( pocomment , pocount , mno ) values( '회원가입축하' , 100 , 1  );
-insert into pointlog ( pocomment , pocount , mno ) values( '로그인' , 1 , 1  );
-insert into pointlog ( pocomment , pocount , mno ) values( '아이템구매' , -50 , 1  );
-insert into pointlog ( pocomment , pocount , mno ) values( '포인트구매' , 2000 , 1  );
-insert into pointlog ( pocomment , pocount , mno ) values( '아이템구매' , 1000 , 1  );
+insert into point ( pcontent , pcount , mno ) values( '회원가입축하' , 100 , 1  );
+insert into point ( pcontent , pcount , mno ) values( '로그인' , 1 , 1  );
+insert into point ( pcontent , pcount , mno ) values( '아이템구매' , -50 , 1  );
+insert into point ( pcontent , pcount , mno ) values( '포인트구매' , 2000 , 1  );
+insert into point ( pcontent , pcount , mno ) values( '아이템구매' , 1000 , 1  );
 
-select * from pointlog;
+select * from point;
 
 -- 카테고리 테이블[ 카테고리번호 , 카테고리 이름 ( 공지사항 , 커뮤니티 , QnA , 노하우 등등 ) ]
 create table category(
@@ -73,7 +73,7 @@ create table board(
     constraint foreign key ( mno ) references member( mno ) on update cascade on delete cascade ,     -- [회원]pk가 삭제되면 게시물fk는 null 변경
    constraint foreign key ( cno ) references category( cno ) on update cascade on delete cascade    -- [카테고리]pk가 삭제되면 게시물 같이 삭제 
 );
-
+select b.* , m.mid , c.cname from board b inner join member m on b.mno = m.mno inner join category c on c.cno = b.cno order by b.bno desc;
 
 
 -- 뉴스 카테고리 게시물 20개 삽입
@@ -117,3 +117,4 @@ insert into board (btitle, bcontent, mno, cno) values
 ('전문적인 카메라 리뷰', '프로페셔널 카메라를 사용해본 후기를 남깁니다. 사용감과 화질을 평가해보았습니다.', 5, 5);
 
 select * from board;
+select * from category;

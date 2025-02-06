@@ -17,4 +17,7 @@ public class BoardDto {
 	private int bview;
 	private int mno;
 	private int cno;
+//	+ HTML에 출력할 때 작성자의 회원번호가 아닌 작성자의 ID 출력
+	private String mid;
+	private String cname;
 }
