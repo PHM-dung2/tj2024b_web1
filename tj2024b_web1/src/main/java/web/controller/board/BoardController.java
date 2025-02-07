@@ -42,7 +42,9 @@ public class BoardController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println(">> BOARD GET RUN");
-		ArrayList<BoardDto> result = BoardDao.getInstance().findAll();
+		// 요청 매개변수
+		int cno = Integer.parseInt( req.getParameter("cno") );
+		ArrayList<BoardDto> result = BoardDao.getInstance().findAll(cno);
 			ObjectMapper mapper = new ObjectMapper();
 			String jsonResult = mapper.writeValueAsString(result);
 		resp.setContentType("application/json");
