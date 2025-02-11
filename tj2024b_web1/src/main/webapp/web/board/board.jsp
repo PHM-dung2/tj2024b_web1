@@ -26,8 +26,13 @@
 			
 			</tbody>
 		</table>
-		
-		
+
+		<nav aria-label="Page navigation example">
+			<ul class="pagination pagebtnbox justify-content-center">
+				
+			</ul>
+		</nav>
+
 	</div>
 	
 	<jsp:include page="/web/footer.jsp"></jsp:include>

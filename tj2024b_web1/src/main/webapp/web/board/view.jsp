@@ -9,20 +9,40 @@
 <body>
 
 	<jsp:include page="/web/header.jsp"></jsp:include>
-	
+
 	<div class="container">
-		<div> 
-			<span class="midbox"> 작성자 구역 </span>
-			<span class="viewbox"> 조회수 구역 </span>
-			<span class="datebox"> 작성일 구역 </span>
+
+		<div>
+			작성자 : <span class="midbox"> 
+			작성자 구역 </span> 조회수 : <span class="viewbox"> 
+			조회수 구역 </span> 작성일 : <span class="datebox">
+			작성일 구역 </span>
 		</div>
-		<div class="titlebox"> 제목이 들어갈 구역 </div>
-		<div class="contentbox"> 본문이 들어갈 구역 </div>
-	</div>
+		<br /> <br />
+
+		<div style="text-align: center; font-size: 30px" class="titlebox">
+			제목이 들어갈 구역
+		</div>
+		<br /> <br />
+
+		<div class="contentbox">본문이 들어갈 구역</div>
+		<br /> <br />
+
+			<div>
+				<textarea class="rcontentinput form-control"></textarea>
+				<!--  form-control : 부트스트랩css -->
+				<button onclick="onReplyWrite()" type="button" class="btn btn-primary">
+					댓글 게시
+				</button>
+			</div>
 	
-	<jsp:include page="/web/footer.jsp"></jsp:include>
-	
-	<script src="/tj2024b_web1/web/js/board/view.js"></script>
+			<div class="replybox mt-5">
+			
+			</div>
+
+		</div>
+
+	<script src="/tj2024b_web1/web/js/board/view.js" ></script>
 
 </body>
 </html>

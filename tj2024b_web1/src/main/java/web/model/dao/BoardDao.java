@@ -4,6 +4,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,16 +34,30 @@ public class BoardDao extends Dao{
 		return false;
 	} // f end
 	
+//	2-2 게시물의 전체 개수 조회 
+	public int getTotalSize( int cno ) {
+		try {
+			String sql = "select count(*) from board where cno = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+				ps.setInt(1, cno);
+			ResultSet rs  = ps.executeQuery();
+			if( rs.next() ) { return rs.getInt( 1 ); }
+		}catch( SQLException e ) { System.out.println(e); }
+		return 0;
+	} // f end
+	
+	
 //	2. 전체 게시물 조회
-	public ArrayList<BoardDto> findAll( int cno ){
+	public ArrayList<BoardDto> findAll( int cno , int startRow , int display ){
 		ArrayList<BoardDto> result = new ArrayList<BoardDto>();
 		
 		try {
 			String sql = "select b.* , m.mid from board b inner join member m on b.mno = m.mno "
-					+ "where cno=? "
-					+ "order by b.bno desc";
+					+ "where cno=? order by b.bno desc limit ? , ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
 				ps.setInt(1, cno);
+				ps.setInt(2, startRow);
+				ps.setInt(3, display);
 			ResultSet rs = ps.executeQuery();
 			while( rs.next() ) {
 				BoardDto boardDto = new BoardDto();
@@ -126,17 +143,42 @@ public class BoardDao extends Dao{
 	} // f end
 	
 //	6. 댓글 작성
-	public boolean replyWrite( ReplyDto replyDto ) {
+	public boolean replyWrite( HashMap<String, String> map ) {
 		try {
 			String sql = "insert into reply(rcontent, mno, bno) value( ?,?,? )";
 			PreparedStatement ps = conn.prepareStatement(sql);
-				ps.setString(1, replyDto.getRcontent());
-				ps.setInt(2, replyDto.getMno());
-				ps.setInt(3, replyDto.getBno());
+				ps.setString(1, map.get("rcontent"));
+				ps.setString(2, map.get("mno"));
+				ps.setString(3, map.get("bno"));
 			int count = ps.executeUpdate();
 			if( count == 1 ) { return true; }
 		}catch( SQLException e ) { System.out.println(e); }
 		return false;
 	} // f end
+	
+//	7. 특정 게시물의 댓글 전체 조회
+	public List< Map<String, String> > replyFindAll( int bno ){
+		List< Map<String, String> > result = new ArrayList<>();
+		try {
+			String sql = "select * from reply r "
+					+ "inner join member m on r.mno = m.mno "
+					+ "where r.bno = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+				ps.setInt(1, bno);
+			ResultSet rs = ps.executeQuery();
+			while( rs.next() ) {
+				Map<String, String> map = new HashMap<String, String>();
+				map.put( "rno" , rs.getString("rno") );
+				map.put( "rcontent" , rs.getString("rcontent") );
+				map.put( "rdate" , rs.getString("rdate") );
+				map.put( "mid" , rs.getString("mid") );
+				map.put( "mno" , rs.getString("mno") );
+				map.put( "mimg" , rs.getString("mimg") );
+				result.add( map );
+			}
+		}catch( SQLException e ) { System.out.println(e); }
+		return result;
+	} // f end
+	
 	
 }
