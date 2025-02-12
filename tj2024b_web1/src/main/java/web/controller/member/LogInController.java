@@ -46,6 +46,9 @@ public class LogInController extends HttpServlet{
 					pointDto.setPcount( 1 );
 					pointDto.setMno(logInMno);
 					MemberDao.getInstance().pointPost(pointDto);
+					
+					// ---- 서버소켓의 메시지 함수
+					
 				} // if end
 				
 			} // if end

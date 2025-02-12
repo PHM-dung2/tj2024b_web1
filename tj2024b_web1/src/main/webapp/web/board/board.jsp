@@ -34,7 +34,7 @@
 		</nav>
 
 	</div>
-	
+
 	<jsp:include page="/web/footer.jsp"></jsp:include>
 
 	<script src="/tj2024b_web1/web/js/board/board.js"></script>

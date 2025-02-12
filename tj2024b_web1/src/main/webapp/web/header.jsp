@@ -48,9 +48,10 @@
 							<li><a class="dropdown-item" href="#">Action</a></li>
 							<li><a class="dropdown-item" href="#">Another action</a></li>
 							<li><hr class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="#">Something else
-									here</a></li>
-						</ul></li>
+							<li><a class="dropdown-item" href="#">Something else here</a>
+							</li>
+						</ul>
+					</li>
 				</ul>
 				
 				<!-- 오른쪽 메뉴 목록 -->
@@ -60,6 +61,16 @@
 			</div>
 		</div>
 	</nav>
+	
+	<div aria-live="polite" aria-atomic="true" class="position-relative">
+      <!-- Position it: -->
+      <!-- - `.toast-container` for spacing between toasts -->
+      <!-- - `top-0` & `end-0` to position the toasts in the upper right corner -->
+      <!-- - `.p-3` to prevent the toasts from sticking to the edge of the container  -->
+      <div class=" msgbox toast-container top-0 end-0 p-3" style=" position: fixed; bottom: 30px; right: 10px; " >
+     
+      </div>
+    </div>
 
 	<!-- 부트스트랩 js -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

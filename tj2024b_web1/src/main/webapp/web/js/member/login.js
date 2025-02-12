@@ -26,7 +26,8 @@ const onLogIn = () => {
 	fetch( '/tj2024b_web1/member/login' , option )
 	.then( r => r.json() )
 	.then( data => {
-		if( data > 0 ){ alert("로그인 성공"); location.href="../index.jsp"; } // ../ 상위 폴더로 이동 뜻
+		if( data > 0 ){ 
+			alert("로그인 성공"); onMsgSend( mid ); location.href="../index.jsp"; } // ../ 상위 폴더로 이동 뜻
 		else{ alert('로그인 실패'); }
 	}) // then end
 	.catch( e => { console.log( e ); })

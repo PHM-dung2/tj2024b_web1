@@ -16,7 +16,7 @@ const getLogInInfo = () => {
 					<li class="nav-item"><a class="nav-link" href="/tj2024b_web1/web/member/signup.jsp">회원가입</a></li>`
 		}else{ console.log('로그인상태')
 			html += `<li class="nav-item">
-						<a class="nav-link" href="#" > <img class="header_profile" src="/tj2024b_web1/upload/${ data.mimg }" /> ${ data.mid } 님 </a>
+						<a class="header_id nav-link" href="#" > <img class="header_profile" src="/tj2024b_web1/upload/${ data.mimg }" /> ${ data.mid } 님 </a>
 					</li>
 					<li class="nav-item currentPoint"></li>
 					<li class="nav-item"><a class="nav-link" href="/tj2024b_web1/web/member/info.jsp">마이페이지</a></li>
@@ -54,6 +54,41 @@ const currentPoint = () => {
 		}) // then end
 		.catch( e => { console.log(e); })
 } // f end
+
+// [4] 클라이언트 소켓 만들기
+const alarmSocket = new WebSocket('ws://localhost:8080/tj2024b_web1/alarmsocket');
+
+// [5] 전송
+const onMsgSend = ( mid ) => {
+	alarmSocket.send( mid );
+} // f end
+
+// [6] 알람 출력
+alarmSocket.onmessage = ( msgEvent ) => {
+	console.log( alarmSocket );
+	console.log('소켓 메세지 전송');
+	console.log( msgEvent );
+	console.log( msgEvent.data );
+	
+	// 1. 메세지 html에 출력
+	//		1. 어디에
+	const msgbox = document.querySelector('.msgbox');
+	// 		2. 무엇을
+	let html = '';
+	html += `<div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
+		       	<div class="toast-header">
+		      		<svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#007aff"></rect></svg>
+		       		<strong class="me-auto">tj2024b_web1</strong>
+		       		<small class="text-body-secondary"></small>
+		       		<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+		       	</div>
+			    <div class="toast-body"> 
+					${ msgEvent.data } 님이 로그인하셨습니다.
+				</div>
+			</div>`;
+	//		3. 출력
+	msgbox.innerHTML = html;
+}
 
 
 

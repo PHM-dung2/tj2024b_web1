@@ -226,6 +226,7 @@ INSERT INTO reply (rcontent, mno, bno) VALUES
 ('이 부분이 특히 흥미로웠어요.', 5, 2),
 ('더 많은 자료를 찾을 수 있을까요?', 4, 2);
 
+select * from member;
 select * from board;
 select * from reply;
 
