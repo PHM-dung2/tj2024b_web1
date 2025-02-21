@@ -40,7 +40,7 @@ public class BoardDao extends Dao{
 			String sql = "select count(*) from board where cno = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
 				ps.setInt(1, cno);
-			ResultSet rs  = ps.executeQuery();
+			ResultSet rs = ps.executeQuery();
 			if( rs.next() ) { return rs.getInt( 1 ); }
 		}catch( SQLException e ) { System.out.println(e); }
 		return 0;
